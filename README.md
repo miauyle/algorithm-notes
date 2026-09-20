@@ -19,4 +19,4 @@
 
 ## Notes
 
-👉 [147 道算法面试题整理](./Algorithm_Interview.md)
+👉 [算法面试题整理](./Algorithm_Interview.md)
