@@ -5154,7 +5154,9 @@ class Solution {
             }
         }
         int minutes = 0;
-        int[][] dirs = {{1,0},{-1,0},{0,1},{0,-1}};
+        int[][] dirs = {
+                         {1,0},{-1,0},{0,1},{0,-1}
+                         };
         while (fresh > 0 && !queue.isEmpty()) {
             int size = queue.size();
             for (int i = 0; i < size; i++) {
