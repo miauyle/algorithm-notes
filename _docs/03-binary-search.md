@@ -8,8 +8,6 @@ description: 二分查找模板、边界语义与旋转数组。
 
 ## 03 二分
 
-> [← 上一章](02-sliding-window-prefix.md) · [目录](../README.md) · [下一章 →](04-linked-list.md)
-
 先说“我要找哪个边界”，再选模板。不要先写 while，再猜应该用 `<=` 还是 `<`。
 
 对于 lower_bound（第一个不小于目标的位置），本书统一半开区间 `[left,right)`：
@@ -411,5 +409,3 @@ class Solution {
 ```
 
 
-
-> [目录](../README.md)
