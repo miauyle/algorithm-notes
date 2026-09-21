@@ -119,7 +119,7 @@ description: 易混题目、复习方法、覆盖清单与验证记录。
 | 85 | [85. 最大矩形](05-stack-monotonic.md#q-85) | 栈与单调结构 | C | 原题 |
 | 88 | [88. 合并两个有序数组](01-array-two-pointers.md#q-88) | 数组与双指针 | A | 原题 |
 | 92 | [92. 反转链表 II](04-linked-list.md#q-92) | 链表 | A | 原题 |
-| 93 | [复原 IP 地址](09-backtracking.md#q-93) | 回溯 | B | 原题 |
+| 93 | [93. 复原 IP 地址](09-backtracking.md#q-93) | 回溯 | B | 原题 |
 | 96 | [96. 不同的二叉搜索树](11-dynamic-programming.md#q-96) | 动态规划 | B | 原题 |
 | 98 | [98. 验证二叉搜索树](07-tree.md#q-98) | 树 | A | 原题 |
 | 101 | [101. 对称二叉树](07-tree.md#q-101) | 树 | A | 原题 |
