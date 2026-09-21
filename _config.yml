@@ -78,7 +78,7 @@ docsteer:
     enabled: true
     repo: "https://github.com/miauyle/algorithm-notes"
     branch: "master"
-    path: ""
+    path: "_docs"
 
   analytics:
     plausible_domain:
@@ -116,6 +116,11 @@ plugins:
   - jekyll-sitemap
   - jekyll-feed
   - jekyll-paginate
+  - jekyll-relative-links
+
+relative_links:
+  enabled: true
+  collections: true  
 
 feed:
   path: feed.xml
