@@ -1,3 +1,9 @@
+---
+title: 08 图与搜索
+category: 搜索与算法范式
+description: DFS、BFS、拓扑排序与图建模。
+---
+
 <a id="chapter-08"></a>
 
 ## 08 图与搜索

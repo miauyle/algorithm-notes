@@ -1,3 +1,9 @@
+---
+title: 09 回溯
+category: 搜索与算法范式
+description: 子集、排列、组合、切分与棋盘搜索。
+---
+
 <a id="chapter-09"></a>
 
 ## 09 回溯

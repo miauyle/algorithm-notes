@@ -1,3 +1,9 @@
+---
+title: 02 窗口与前缀
+category: 基础数据结构
+description: 滑动窗口、前缀和与区间统计。
+---
+
 <a id="chapter-02"></a>
 
 ## 02 窗口与前缀

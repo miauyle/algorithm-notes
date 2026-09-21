@@ -1,3 +1,9 @@
+---
+title: 12 字符串与模拟
+category: 综合专题
+description: 字符串扫描、解析、格式化与规则模拟。
+---
+
 <a id="chapter-12"></a>
 
 ## 12 字符串与模拟

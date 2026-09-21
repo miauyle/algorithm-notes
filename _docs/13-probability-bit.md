@@ -1,3 +1,9 @@
+---
+title: 13 概率与位运算
+category: 综合专题
+description: 位运算性质、随机映射与概率说明。
+---
+
 <a id="chapter-13"></a>
 
 ## 13 概率与位运算

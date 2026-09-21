@@ -1,3 +1,9 @@
+---
+title: 03 二分
+category: 基础数据结构
+description: 二分查找模板、边界语义与旋转数组。
+---
+
 <a id="chapter-03"></a>
 
 ## 03 二分

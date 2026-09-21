@@ -1,0 +1,128 @@
+# Site
+title: 算法笔记
+tagline: 按模式组织的算法面试教程
+description: >-
+  一套以 Java 为主、按常见解题模式组织的算法与数据结构面试笔记。
+
+url: "https://miauyle.github.io"
+baseurl: "/algorithm-notes"
+lang: zh-CN
+timezone: Asia/Shanghai
+
+theme: jekyll-theme-docsteer
+
+# DocSteer theme options
+docsteer:
+  skin: aqua
+  mode: auto
+  skin_switcher: true
+  mode_switcher: true
+  doc_layouts: [doc, faq]
+
+  sidebar:
+    enabled: true
+    collapse_inactive: true
+    sticky: true
+
+  toc:
+    enabled: true
+    min_headings: 2
+
+  search:
+    enabled: true
+    collections: [docs]
+    include_pages: true
+    hotkey: true
+    placeholder: "搜索文档…"
+    max_results: 8
+    index_questions: true
+
+  lightbox:
+    enabled: true
+
+  code:
+    copy_button: true
+    line_numbers: false
+
+  fontawesome:
+    enabled: true
+    source: local
+    cdn_url: "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    cdn_integrity: ""
+
+  logo: /assets/images/logo.svg
+  favicon: /assets/images/favicon.svg
+
+  footer:
+    show_credit: true
+    copyright: "miauyle"
+    links:
+      - { label: "首页", url: "/" }
+      - { label: "GitHub", url: "https://github.com/miauyle/algorithm-notes" }
+
+  buy_me_a_coffee:
+    username: ""
+    label: "Buy me a coffee"
+    show_in: []
+
+  social:
+    github: "miauyle/algorithm-notes"
+    linkedin:
+    email:
+    twitter:
+    mastodon:
+    discord:
+    rss: true
+
+  edit_page:
+    enabled: true
+    repo: "https://github.com/miauyle/algorithm-notes"
+    branch: "master"
+    path: ""
+
+  analytics:
+    plausible_domain:
+    ga4_id:
+
+collections:
+  docs:
+    output: true
+    permalink: /docs/:path/
+
+defaults:
+  - scope: { path: "", type: "docs" }
+    values:
+      layout: doc
+      seo:
+        type: TechArticle
+  - scope: { path: "" }
+    values:
+      layout: page
+
+markdown: kramdown
+highlighter: rouge
+kramdown:
+  input: GFM
+  syntax_highlighter: rouge
+  syntax_highlighter_opts:
+    default_lang: plaintext
+
+sass:
+  style: compressed
+  sourcemap: never
+
+plugins:
+  - jekyll-seo-tag
+  - jekyll-sitemap
+  - jekyll-feed
+  - jekyll-paginate
+
+feed:
+  path: feed.xml
+
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - vendor
+  - node_modules
+  - README.md

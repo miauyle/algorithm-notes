@@ -1,3 +1,9 @@
+---
+title: 04 链表
+category: 基础数据结构
+description: 链表指针操作、反转、合并与快慢指针。
+---
+
 <a id="chapter-04"></a>
 
 ## 04 链表

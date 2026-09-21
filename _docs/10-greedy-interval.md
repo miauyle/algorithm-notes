@@ -1,3 +1,9 @@
+---
+title: 10 贪心与区间
+category: 搜索与算法范式
+description: 贪心选择、交换论证与区间问题。
+---
+
 <a id="chapter-10"></a>
 
 ## 10 贪心与区间

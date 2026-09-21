@@ -1,3 +1,9 @@
+---
+title: 05 栈与单调结构
+category: 基础数据结构
+description: 栈、单调栈、单调队列与表达式处理。
+---
+
 <a id="chapter-05"></a>
 
 ## 05 栈与单调结构

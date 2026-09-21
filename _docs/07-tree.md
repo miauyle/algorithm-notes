@@ -1,3 +1,9 @@
+---
+title: 07 树
+category: 基础数据结构
+description: 二叉树遍历、递归语义与搜索树。
+---
+
 <a id="chapter-07"></a>
 
 ## 07 树

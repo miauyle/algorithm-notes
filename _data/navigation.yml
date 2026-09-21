@@ -1,0 +1,40 @@
+main:
+  - title: 教程
+    url: /docs/introduction/
+    icon: fa-solid fa-book
+  - title: GitHub
+    url: https://github.com/miauyle/algorithm-notes
+    icon: fa-brands fa-github
+
+sidebar:
+  - title: 开始阅读
+    icon: fa-solid fa-rocket
+    open: true
+    children:
+      - { title: 阅读说明, url: /docs/introduction/ }
+
+  - title: 基础数据结构
+    icon: fa-solid fa-layer-group
+    children:
+      - { title: 01 数组与双指针, url: /docs/01-array-two-pointers/ }
+      - { title: 02 窗口与前缀, url: /docs/02-sliding-window-prefix/ }
+      - { title: 03 二分, url: /docs/03-binary-search/ }
+      - { title: 04 链表, url: /docs/04-linked-list/ }
+      - { title: 05 栈与单调结构, url: /docs/05-stack-monotonic/ }
+      - { title: 06 堆与设计, url: /docs/06-heap-design/ }
+      - { title: 07 树, url: /docs/07-tree/ }
+
+  - title: 搜索与算法范式
+    icon: fa-solid fa-route
+    children:
+      - { title: 08 图与搜索, url: /docs/08-graph-search/ }
+      - { title: 09 回溯, url: /docs/09-backtracking/ }
+      - { title: 10 贪心与区间, url: /docs/10-greedy-interval/ }
+      - { title: 11 动态规划, url: /docs/11-dynamic-programming/ }
+
+  - title: 综合专题
+    icon: fa-solid fa-puzzle-piece
+    children:
+      - { title: 12 字符串与模拟, url: /docs/12-string-simulation/ }
+      - { title: 13 概率与位运算, url: /docs/13-probability-bit/ }
+      - { title: 附录, url: /docs/appendices/ }

@@ -1,3 +1,9 @@
+---
+title: 06 堆与设计
+category: 基础数据结构
+description: 堆、数据流、缓存与 Trie 设计题。
+---
+
 <a id="chapter-06"></a>
 
 ## 06 堆与设计

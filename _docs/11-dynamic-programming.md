@@ -1,3 +1,9 @@
+---
+title: 11 动态规划
+category: 搜索与算法范式
+description: 状态定义、转移、初始化与空间压缩。
+---
+
 <a id="chapter-11"></a>
 
 ## 11 动态规划
