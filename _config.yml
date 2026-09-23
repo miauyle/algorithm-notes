@@ -78,7 +78,8 @@ docsteer:
     enabled: true
     repo: "https://github.com/miauyle/algorithm-notes"
     branch: "master"
-    path: "_docs"
+    # Collection document page.path already contains "_docs/..."; keep this empty.
+    path: ""
 
   analytics:
     plausible_domain:
