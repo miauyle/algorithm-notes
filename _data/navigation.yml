@@ -12,6 +12,7 @@ sidebar:
     open: true
     children:
       - { title: 阅读说明, url: /docs/introduction/ }
+      - { title: 题型识别与解题套路, url: /docs/pattern-guide/ }
 
   - title: 基础数据结构
     icon: fa-solid fa-layer-group
