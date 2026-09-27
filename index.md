@@ -33,6 +33,10 @@ sections:
         url: /docs/introduction/
         icon: fa-solid fa-compass
         text: 阅读路径、面试表达与代码约定
+      - label: 题型识别与解题套路
+        url: /docs/pattern-guide/
+        icon: fa-solid fa-diagram-project
+        text: 从题目条件选择方法，链接到现有题解
       - label: 数组与双指针
         url: /docs/01-array-two-pointers/
         icon: fa-solid fa-arrow-right-arrow-left
