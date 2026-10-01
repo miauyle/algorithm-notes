@@ -1,0 +1,24 @@
+- title: 双指针
+  url: /docs/01-array-two-pointers/
+  text: 相向、同向移动与原地处理
+- title: 滑动窗口
+  url: /docs/02-sliding-window-prefix/
+  text: 连续区间、计数约束与窗口收缩
+- title: 二分
+  url: /docs/03-binary-search/
+  text: 单调性、边界与答案空间
+- title: Tree
+  url: /docs/07-tree/
+  text: 递归定义、遍历、BST 与路径状态
+- title: BFS / DFS
+  url: /docs/08-graph-search/
+  text: 图遍历、层次搜索与连通性
+- title: Backtracking
+  url: /docs/09-backtracking/
+  text: 选择列表、约束、撤销与剪枝
+- title: Greedy
+  url: /docs/10-greedy-interval/
+  text: 排序依据、局部最优与区间关系
+- title: Dynamic Programming
+  url: /docs/11-dynamic-programming/
+  text: 状态、转移、初始化与空间优化
