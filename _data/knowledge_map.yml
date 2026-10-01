@@ -1,0 +1,67 @@
+groups:
+  - id: start
+    title: 开始与题型识别
+    pages:
+      - title: 阅读说明
+        url: /docs/introduction/
+        summary: 阅读路径、面试表达、Java 约定与复习方式
+      - title: 题型识别与解题套路
+        url: /docs/pattern-guide/
+        summary: 从题目条件判断可利用性质并选择解法模式
+  - id: linear
+    title: 线性结构与指针
+    pages:
+      - title: 数组与双指针
+        url: /docs/01-array-two-pointers/
+        summary: 相向、同向指针与原地处理
+      - title: 窗口与前缀
+        url: /docs/02-sliding-window-prefix/
+        summary: 连续区间、频次约束与前缀信息
+      - title: 链表
+        url: /docs/04-linked-list/
+        summary: 指针重连、快慢指针与局部结构变化
+  - id: ordered
+    title: 有序性与辅助结构
+    pages:
+      - title: 二分
+        url: /docs/03-binary-search/
+        summary: 单调性、边界与答案空间
+      - title: 栈与单调结构
+        url: /docs/05-stack-monotonic/
+        summary: 最近关系、括号状态与单调栈
+      - title: 堆与设计
+        url: /docs/06-heap-design/
+        summary: Top K、动态最值与数据结构设计
+  - id: trees-graphs
+    title: 树与图搜索
+    pages:
+      - title: 树
+        url: /docs/07-tree/
+        summary: 递归语义、遍历、BST 与树上状态
+      - title: 图与搜索
+        url: /docs/08-graph-search/
+        summary: BFS / DFS、拓扑关系与连通性
+  - id: decision
+    title: 搜索与决策
+    pages:
+      - title: 回溯
+        url: /docs/09-backtracking/
+        summary: 选择、约束、撤销与搜索树剪枝
+      - title: 贪心与区间
+        url: /docs/10-greedy-interval/
+        summary: 局部选择、排序依据与区间关系
+  - id: state-composite
+    title: 状态与综合
+    pages:
+      - title: 动态规划
+        url: /docs/11-dynamic-programming/
+        summary: 状态定义、转移、初始化与空间压缩
+      - title: 字符串与模拟
+        url: /docs/12-string-simulation/
+        summary: 状态机、解析与流程模拟
+      - title: 概率与位运算
+        url: /docs/13-probability-bit/
+        summary: 随机映射、位性质与特殊技巧
+      - title: 附录
+        url: /docs/appendices/
+        summary: 题目覆盖、复习建议与验证记录
