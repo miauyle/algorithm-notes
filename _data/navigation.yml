@@ -1,5 +1,5 @@
 main:
-  - title: Docs
+  - title: 文档
     url: /docs/introduction/
     icon: fa-solid fa-book
   - title: GitHub
