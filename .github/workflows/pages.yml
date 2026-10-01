@@ -3,6 +3,8 @@ name: Deploy site
 on:
   push:
     branches: [master]
+  pull_request:
+    branches: [master]
   # Lets you re-deploy from the Actions tab without pushing a commit.
   workflow_dispatch:
 
@@ -36,6 +38,20 @@ jobs:
         run: bundle exec jekyll build --baseurl "${{ steps.pages.outputs.base_path }}"
         env:
           JEKYLL_ENV: production
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+
+      - name: Browser brand verification
+        env:
+          BASEURL: /algorithm-notes
+          EXPECTED_LOGO: logo-theme.svg
+          EXPECTED_FAVICON: favicon-algorithm.svg
+        run: |
+          npm install --prefix "$RUNNER_TEMP/brand-ui" --no-audit --no-fund --ignore-scripts playwright@1.51.1
+          "$RUNNER_TEMP/brand-ui/node_modules/.bin/playwright" install --with-deps chromium
+          NODE_PATH="$RUNNER_TEMP/brand-ui/node_modules" node scripts/check_brand_ui.cjs
 
       - name: Validate Edit this page links
         run: |
@@ -71,6 +87,7 @@ jobs:
           path: _site
 
   deploy:
+    if: github.ref == 'refs/heads/master' && github.event_name != 'pull_request'
     needs: build
     runs-on: ubuntu-latest
     environment:
