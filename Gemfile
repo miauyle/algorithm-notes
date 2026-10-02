@@ -1,7 +1,7 @@
 source "https://rubygems.org"
 
 # Use DocSteer as a theme gem, as documented by the official installation guide.
-gem "jekyll-theme-docsteer", "~> 1.0"
+gem "jekyll-theme-docsteer", "= 1.1.1"
 
 # Run the site locally with `bundle exec jekyll serve`
 gem "jekyll", "~> 4.3"
