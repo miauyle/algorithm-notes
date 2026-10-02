@@ -17,7 +17,7 @@ docsteer:
   mode: auto
   skin_switcher: true
   mode_switcher: true
-  doc_layouts: [doc, faq]
+  doc_layouts: [doc]
 
   sidebar:
     enabled: true
@@ -35,7 +35,7 @@ docsteer:
     hotkey: true
     placeholder: "搜索文档…"
     max_results: 8
-    index_questions: true
+    index_questions: false
 
   lightbox:
     enabled: true
@@ -60,18 +60,9 @@ docsteer:
       - { label: "首页", url: "/" }
       - { label: "GitHub", url: "https://github.com/miauyle/algorithm-notes" }
 
-  buy_me_a_coffee:
-    username: ""
-    label: "Buy me a coffee"
-    show_in: []
 
   social:
     github: "miauyle/algorithm-notes"
-    linkedin:
-    email:
-    twitter:
-    mastodon:
-    discord:
     rss: true
 
   edit_page:
@@ -81,9 +72,6 @@ docsteer:
     # Collection document page.path already contains "_docs/..."; keep this empty.
     path: ""
 
-  analytics:
-    plausible_domain:
-    ga4_id:
 
 collections:
   docs:
