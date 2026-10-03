@@ -117,7 +117,11 @@ const report = { checks: [], errors: [] };
     for (const item of ordered) {
       await open(item.route);
       await assertSidebarOrder(item.path);
-      assert.equal(await page.locator('#sidebar .sidebar__link.is-active').count(), 1, item.path);
+      assert.equal(
+        await page.locator(`#sidebar .sidebar__link[href="${base}${item.route}"].is-active`).count(),
+        1,
+        item.path + ': current article is active'
+      );
       for (const link of await page.locator('.doc-pager a').evaluateAll(nodes => nodes.map(node => node.getAttribute('href')))) {
         assert.ok(link && link.startsWith(base + '/docs/'), item.path + ': pager URL');
       }
