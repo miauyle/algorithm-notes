@@ -1,0 +1,144 @@
+{
+  "schema_version": 1,
+  "title": "算法面试笔记",
+  "groups": [
+    {
+      "id": "start",
+      "title": "开始阅读",
+      "icon": "fa-solid fa-rocket",
+      "open": true,
+      "pages": [
+        {
+          "id": "pattern-guide",
+          "title": "题型识别与解题套路",
+          "path": "_docs/pattern-guide.md",
+          "summary": "从题目要求和约束出发，识别可利用性质并选择解题模式"
+        },
+        {
+          "id": "introduction",
+          "title": "阅读说明",
+          "path": "_docs/introduction.md",
+          "summary": "阅读路径、面试表达方式、Java 约定与复习方法"
+        },
+        {
+          "id": "interview-sprint",
+          "title": "面试冲刺路线",
+          "path": "_docs/interview-sprint.md",
+          "summary": "用 3 / 7 / 14 天把现有题库压缩成可重复调用的面试主线"
+        },
+        {
+          "id": "cheat-sheet",
+          "title": "算法面试速查表",
+          "path": "_docs/cheat-sheet.md",
+          "summary": "面试前快速回忆题型信号、核心状态、不变量和常见误用"
+        }
+      ]
+    },
+    {
+      "id": "fundamentals",
+      "title": "基础数据结构",
+      "icon": "fa-solid fa-layer-group",
+      "pages": [
+        {
+          "id": "array-two-pointers",
+          "title": "01 数组与双指针",
+          "path": "_docs/01-array-two-pointers.md",
+          "summary": "数组原地操作、排序、哈希与双指针模式"
+        },
+        {
+          "id": "sliding-window-prefix",
+          "title": "02 窗口与前缀",
+          "path": "_docs/02-sliding-window-prefix.md",
+          "summary": "滑动窗口、前缀和与连续区间统计"
+        },
+        {
+          "id": "binary-search",
+          "title": "03 二分",
+          "path": "_docs/03-binary-search.md",
+          "summary": "二分查找模板、边界语义与旋转数组"
+        },
+        {
+          "id": "linked-list",
+          "title": "04 链表",
+          "path": "_docs/04-linked-list.md",
+          "summary": "链表指针操作、反转、合并与快慢指针"
+        },
+        {
+          "id": "stack-monotonic",
+          "title": "05 栈与单调结构",
+          "path": "_docs/05-stack-monotonic.md",
+          "summary": "栈、单调栈、单调队列与表达式处理"
+        },
+        {
+          "id": "heap-design",
+          "title": "06 堆与设计",
+          "path": "_docs/06-heap-design.md",
+          "summary": "堆、数据流、缓存与 Trie 设计题"
+        },
+        {
+          "id": "tree",
+          "title": "07 树",
+          "path": "_docs/07-tree.md",
+          "summary": "二叉树遍历、递归语义与搜索树"
+        }
+      ]
+    },
+    {
+      "id": "patterns",
+      "title": "搜索与算法范式",
+      "icon": "fa-solid fa-route",
+      "pages": [
+        {
+          "id": "graph-search",
+          "title": "08 图与搜索",
+          "path": "_docs/08-graph-search.md",
+          "summary": "DFS、BFS、拓扑排序与图建模"
+        },
+        {
+          "id": "backtracking",
+          "title": "09 回溯",
+          "path": "_docs/09-backtracking.md",
+          "summary": "子集、排列、组合、切分与棋盘搜索"
+        },
+        {
+          "id": "greedy-interval",
+          "title": "10 贪心与区间",
+          "path": "_docs/10-greedy-interval.md",
+          "summary": "贪心选择、交换论证与区间问题"
+        },
+        {
+          "id": "dynamic-programming",
+          "title": "11 动态规划",
+          "path": "_docs/11-dynamic-programming.md",
+          "summary": "状态定义、转移、初始化与空间压缩"
+        }
+      ]
+    },
+    {
+      "id": "composite",
+      "title": "综合专题",
+      "icon": "fa-solid fa-puzzle-piece",
+      "pages": [
+        {
+          "id": "string-simulation",
+          "title": "12 字符串与模拟",
+          "path": "_docs/12-string-simulation.md",
+          "summary": "字符串扫描、解析、格式化与规则模拟"
+        },
+        {
+          "id": "probability-bit",
+          "title": "13 概率与位运算",
+          "path": "_docs/13-probability-bit.md",
+          "summary": "位运算性质、随机映射与概率说明"
+        },
+        {
+          "id": "appendices",
+          "title": "附录",
+          "path": "_docs/appendices.md",
+          "summary": "易混题目、复习方法、覆盖清单与验证记录"
+        }
+      ]
+    }
+  ],
+  "reference_pages": []
+}
