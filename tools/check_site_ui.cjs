@@ -1,5 +1,6 @@
 /* Real Chromium checks against the Jekyll artifact, driven by navigation.json. */
 const { chromium } = require('playwright');
+const { checkBrandIcons } = require('../maintenance/check_brand_icons.cjs');
 const { spawn } = require('node:child_process');
 const fs = require('node:fs');
 const path = require('node:path');
@@ -66,8 +67,8 @@ const report = { checks: [], errors: [] };
     assert.deepEqual(await page.locator('.knowledge-group h3').allTextContents(), nav.groups.map(group => group.title));
 
     const brandLogo = page.locator('.navbar .brand__logo');
-    assert.match(await brandLogo.getAttribute('src'), /logo-theme\.svg$/);
-    const favicon = page.locator('link[rel="icon"]');
+    assert.match(await brandLogo.getAttribute('src'), /logo-theme\.svg\?v=[0-9a-f]{12}$/);
+    const favicon = page.locator('link[rel="icon"][type="image/svg+xml"]');
     assert.equal(await favicon.count(), 1);
     assert.match(await favicon.getAttribute('href'), /favicon-algorithm\.svg\?v=[0-9a-f]{12}$/);
 
@@ -128,6 +129,7 @@ const report = { checks: [], errors: [] };
     }
     report.checks.push(`all ${ordered.length} catalog pages: identical sidebar order, active state and pager URLs`);
 
+    await checkBrandIcons(page, root);
     await page.setViewportSize({ width: 2560, height: 1440 });
     await open('/');
     assert.ok(await page.locator('.knowledge-home').evaluate(node => node.getBoundingClientRect().width >= 1470), 'wide homepage uses desktop space');
@@ -138,6 +140,7 @@ const report = { checks: [], errors: [] };
     report.checks.push('2560px layout');
 
     await page.setViewportSize({ width: 390, height: 844 });
+    await checkBrandIcons(page, root);
     await open('/');
     await page.screenshot({ animations: 'disabled', path: path.join(evidence, 'home-mobile.png') });
     await page.locator('#sidebarToggle').click();
