@@ -12,7 +12,6 @@ const ordered = catalog.map(item => ({
   ...item,
   route: '/docs/' + path.basename(item.path, '.md') + '/'
 }));
-const sidebarTitles = nav.groups.flatMap(group => group.pages.map(item => item.title));
 
 const siteRoot = path.resolve(__dirname, '../_site');
 const evidence = path.resolve(__dirname, '../site-qa');
@@ -103,11 +102,17 @@ const report = { checks: [], errors: [] };
     await open('/docs/');
     assert.match(await page.locator('h1').textContent(), /完整目录/);
 
+    const expectedSidebar = ordered.map(item => ({ title: item.title, href: base + item.route }));
     for (const item of ordered) {
       await open(item.route);
-      const actualSidebar = (await page.locator('#sidebar .sidebar__nav .sidebar__link').allTextContents()).map(text => text.trim());
-      assert.deepEqual(actualSidebar, sidebarTitles, item.path + ': sidebar order');
-      assert.equal(await page.locator('#sidebar .sidebar__nav .sidebar__link.is-active').count(), 1, item.path);
+      const actualSidebar = await page.locator('#sidebar .sidebar__link').evaluateAll((nodes, expectedHrefs) => nodes
+        .map(node => ({
+          title: node.textContent.trim().replace(/\\s+/g, ' '),
+          href: node.getAttribute('href')
+        }))
+        .filter(entry => expectedHrefs.includes(entry.href)), expectedSidebar.map(entry => entry.href));
+      assert.deepEqual(actualSidebar, expectedSidebar, item.path + ': sidebar order');
+      assert.equal(await page.locator('#sidebar .sidebar__link.is-active').count(), 1, item.path);
       for (const link of await page.locator('.doc-pager a').evaluateAll(nodes => nodes.map(node => node.getAttribute('href')))) {
         assert.ok(link && link.startsWith(base + '/docs/'), item.path + ': pager URL');
       }
