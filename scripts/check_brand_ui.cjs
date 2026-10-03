@@ -86,7 +86,9 @@ const root = 'http://127.0.0.1:8765' + baseurl;
       return await page.locator('#sidebar .sidebar__link').evaluateAll(nodes => nodes.map(node => ({
         text: node.textContent.trim().replace(/\\s+/g, ' '),
         href: node.getAttribute('href'),
-        active: node.classList.contains('active') || node.getAttribute('aria-current') === 'page'
+        active: node.classList.contains('active') || node.getAttribute('aria-current') === 'page',
+        top: Math.round(node.getBoundingClientRect().top),
+        cssOrder: getComputedStyle(node).order
       })));
     }
 
