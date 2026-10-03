@@ -1,8 +1,6 @@
-# Site
 title: 算法笔记
 tagline: 按模式组织的算法面试教程
-description: >-
-  一套以 Java 为主、按常见解题模式组织的算法与数据结构面试笔记。
+description: 一套以 Java 为主、按常见解题模式组织的算法与数据结构面试笔记。
 
 url: "https://miauyle.github.io"
 baseurl: "/algorithm-notes"
@@ -11,7 +9,6 @@ timezone: Asia/Shanghai
 
 theme: jekyll-theme-docsteer
 
-# DocSteer theme options
 docsteer:
   skin: aqua
   mode: auto
@@ -55,11 +52,10 @@ docsteer:
 
   footer:
     show_credit: false
-    copyright: "miauyle"
+    copyright: "算法笔记"
     links:
       - { label: "首页", url: "/" }
       - { label: "GitHub", url: "https://github.com/miauyle/algorithm-notes" }
-
 
   social:
     github: "miauyle/algorithm-notes"
@@ -69,9 +65,8 @@ docsteer:
     enabled: true
     repo: "https://github.com/miauyle/algorithm-notes"
     branch: "master"
-    # Collection document page.path already contains "_docs/..."; keep this empty.
+    # Collection documents keep their original _docs/ source paths.
     path: ""
-
 
 collections:
   docs:
@@ -109,7 +104,7 @@ plugins:
 
 relative_links:
   enabled: true
-  collections: true  
+  collections: true
 
 feed:
   path: feed.xml
@@ -120,3 +115,6 @@ exclude:
   - vendor
   - node_modules
   - README.md
+  - navigation.json
+  - tools
+  - site-qa
