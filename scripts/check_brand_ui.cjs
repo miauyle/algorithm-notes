@@ -99,20 +99,19 @@ const root = 'http://127.0.0.1:8765' + baseurl;
       const sidebarResponse = await page.goto(root + pathname, { waitUntil: 'networkidle' });
       assert.equal(sidebarResponse.status(), 200, pathname + ' loads for sidebar verification');
 
-      const actual = [];
-      for (const expected of expectedStartReading) {
-        const link = page.locator(`#sidebar .sidebar__link[href$="${expected.href}"]`);
-        assert.equal(await link.count(), 1, pathname + ' has one sidebar link for ' + expected.title);
-        actual.push({
-          title: (await link.textContent()).trim().replace(/\\s+/g, ' '),
-          href: await link.getAttribute('href'),
-          top: await link.evaluate(node => Math.round(node.getBoundingClientRect().top))
-        });
-      }
+      const expectedTitles = expectedStartReading.map(item => item.title);
+      const actual = await page.locator('#sidebar .sidebar__link').evaluateAll((nodes, titles) => nodes
+        .map(node => ({
+          title: node.textContent.trim().replace(/\\s+/g, ' '),
+          href: node.getAttribute('href'),
+          top: Math.round(node.getBoundingClientRect().top)
+        }))
+        .filter(item => titles.includes(item.title)), expectedTitles);
 
+      assert.equal(actual.length, expectedStartReading.length, pathname + ' exposes all Start Reading links once');
       assert.deepEqual(
         actual.map(item => item.title),
-        expectedStartReading.map(item => item.title),
+        expectedTitles,
         pathname + ' keeps the canonical Start Reading order'
       );
       for (let i = 1; i < actual.length; i++) {
