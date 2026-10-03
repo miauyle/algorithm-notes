@@ -75,27 +75,59 @@ const root = 'http://127.0.0.1:8765' + baseurl;
     await page.goto(root + '/', { waitUntil: 'networkidle' });
     assert.ok(await page.locator('.knowledge-home').evaluate(node => node.getBoundingClientRect().width >= 1470), 'wide homepage uses desktop space');
     assert.ok(await page.locator('html').evaluate(node => parseFloat(getComputedStyle(node).fontSize) >= 16.9), 'wide desktop root type scale');
+
+    const docsNav = page.locator('.navbar a').filter({ hasText: '文档' }).first();
+    const primaryGuide = page.locator('.knowledge-actions .btn--primary');
+    assert.equal(await docsNav.count(), 1, 'navbar docs entry exists');
+    assert.equal(await primaryGuide.count(), 1, 'homepage primary docs entry exists');
+    assert.equal(await primaryGuide.getAttribute('href'), await docsNav.getAttribute('href'), 'homepage and navbar use the same docs entry URL');
+    assert.ok((await primaryGuide.getAttribute('href')).endsWith('/docs/pattern-guide/'), 'canonical docs entry is pattern guide');
     const docResponse = await page.goto(root + "/docs/introduction/", { waitUntil: 'networkidle' });
     assert.equal(docResponse.status(), 200);
     assert.ok(await page.locator('.page-shell').evaluate(node => node.getBoundingClientRect().width >= 1600), 'wide documentation shell');
     assert.ok(await page.locator('#sidebar .sidebar__link').first().evaluate(node => parseFloat(getComputedStyle(node).fontSize) >= 14.5), 'wide sidebar type is readable');
     assert.ok(await page.locator('.toc').evaluate(node => parseFloat(getComputedStyle(node).fontSize) >= 14.5), 'wide TOC type is readable');
 
-    async function sidebarSnapshot(pathname) {
-      await page.goto(root + pathname, { waitUntil: 'networkidle' });
-      return await page.locator('#sidebar .sidebar__link').evaluateAll(nodes => nodes.map(node => ({
-        text: node.textContent.trim().replace(/\\s+/g, ' '),
-        href: node.getAttribute('href'),
-        active: node.classList.contains('active') || node.getAttribute('aria-current') === 'page',
-        top: Math.round(node.getBoundingClientRect().top),
-        cssOrder: getComputedStyle(node).order
-      })));
+    const expectedStartReading = [
+      { title: '题型识别与解题套路', href: '/docs/pattern-guide/' },
+      { title: '阅读说明', href: '/docs/introduction/' },
+      { title: '面试冲刺路线', href: '/docs/interview-sprint/' },
+      { title: '算法面试速查表', href: '/docs/cheat-sheet/' }
+    ];
+
+    async function assertStartReadingSidebar(pathname) {
+      const sidebarResponse = await page.goto(root + pathname, { waitUntil: 'networkidle' });
+      assert.equal(sidebarResponse.status(), 200, pathname + ' loads for sidebar verification');
+
+      const actual = [];
+      for (const expected of expectedStartReading) {
+        const link = page.locator(`#sidebar .sidebar__link[href$="${expected.href}"]`);
+        assert.equal(await link.count(), 1, pathname + ' has one sidebar link for ' + expected.title);
+        actual.push({
+          title: (await link.textContent()).trim().replace(/\\s+/g, ' '),
+          href: await link.getAttribute('href'),
+          top: await link.evaluate(node => Math.round(node.getBoundingClientRect().top))
+        });
+      }
+
+      assert.deepEqual(
+        actual.map(item => item.title),
+        expectedStartReading.map(item => item.title),
+        pathname + ' keeps the canonical Start Reading order'
+      );
+      for (let i = 1; i < actual.length; i++) {
+        assert.ok(actual[i].top > actual[i - 1].top, pathname + ' keeps the same visual sidebar order');
+      }
     }
 
-    const introSidebar = await sidebarSnapshot('/docs/introduction/');
-    const patternSidebar = await sidebarSnapshot('/docs/pattern-guide/');
-    console.log('INTRO_SIDEBAR=' + JSON.stringify(introSidebar));
-    console.log('PATTERN_SIDEBAR=' + JSON.stringify(patternSidebar));
+    for (const pathname of [
+      '/docs/pattern-guide/',
+      '/docs/introduction/',
+      '/docs/interview-sprint/',
+      '/docs/cheat-sheet/'
+    ]) {
+      await assertStartReadingSidebar(pathname);
+    }
 
     async function assertPager(pathname, expectedPrev, expectedNext) {
       const pagerResponse = await page.goto(root + pathname, { waitUntil: 'networkidle' });
