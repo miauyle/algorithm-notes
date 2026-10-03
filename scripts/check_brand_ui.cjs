@@ -81,6 +81,56 @@ const root = 'http://127.0.0.1:8765' + baseurl;
     assert.ok(await page.locator('#sidebar .sidebar__link').first().evaluate(node => parseFloat(getComputedStyle(node).fontSize) >= 14.5), 'wide sidebar type is readable');
     assert.ok(await page.locator('.toc').evaluate(node => parseFloat(getComputedStyle(node).fontSize) >= 14.5), 'wide TOC type is readable');
 
+    async function assertPager(pathname, expectedPrev, expectedNext) {
+      const pagerResponse = await page.goto(root + pathname, { waitUntil: 'networkidle' });
+      assert.equal(pagerResponse.status(), 200, pathname + ' loads');
+
+      const prev = page.locator('.doc-pager__prev');
+      const next = page.locator('.doc-pager__next');
+
+      if (expectedPrev) {
+        assert.equal(await prev.count(), 1, pathname + ' has Previous');
+        assert.equal((await prev.locator('.doc-pager__title').textContent()).trim(), expectedPrev.title);
+        assert.ok((await prev.getAttribute('href')).endsWith(expectedPrev.href), pathname + ' Previous href');
+      } else {
+        assert.equal(await prev.count(), 0, pathname + ' has no Previous');
+      }
+
+      if (expectedNext) {
+        assert.equal(await next.count(), 1, pathname + ' has Next');
+        assert.equal((await next.locator('.doc-pager__title').textContent()).trim(), expectedNext.title);
+        assert.ok((await next.getAttribute('href')).endsWith(expectedNext.href), pathname + ' Next href');
+      } else {
+        assert.equal(await next.count(), 0, pathname + ' has no Next');
+      }
+    }
+
+    await assertPager('/docs/pattern-guide/', null, {
+      title: '阅读说明',
+      href: '/docs/introduction/'
+    });
+    await assertPager('/docs/introduction/', {
+      title: '题型识别与解题套路',
+      href: '/docs/pattern-guide/'
+    }, {
+      title: '面试冲刺路线',
+      href: '/docs/interview-sprint/'
+    });
+    await assertPager('/docs/interview-sprint/', {
+      title: '阅读说明',
+      href: '/docs/introduction/'
+    }, {
+      title: '算法面试速查表',
+      href: '/docs/cheat-sheet/'
+    });
+    await assertPager('/docs/cheat-sheet/', {
+      title: '面试冲刺路线',
+      href: '/docs/interview-sprint/'
+    }, {
+      title: '01 数组与双指针',
+      href: '/docs/01-array-two-pointers/'
+    });
+
     await page.setViewportSize({ width: 390, height: 844 });
     await page.goto(root + '/', { waitUntil: 'networkidle' });
     assert.ok(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth + 1), 'mobile page overflow');
