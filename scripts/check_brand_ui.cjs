@@ -81,6 +81,20 @@ const root = 'http://127.0.0.1:8765' + baseurl;
     assert.ok(await page.locator('#sidebar .sidebar__link').first().evaluate(node => parseFloat(getComputedStyle(node).fontSize) >= 14.5), 'wide sidebar type is readable');
     assert.ok(await page.locator('.toc').evaluate(node => parseFloat(getComputedStyle(node).fontSize) >= 14.5), 'wide TOC type is readable');
 
+    async function sidebarSnapshot(pathname) {
+      await page.goto(root + pathname, { waitUntil: 'networkidle' });
+      return await page.locator('#sidebar .sidebar__link').evaluateAll(nodes => nodes.map(node => ({
+        text: node.textContent.trim().replace(/\\s+/g, ' '),
+        href: node.getAttribute('href'),
+        active: node.classList.contains('active') || node.getAttribute('aria-current') === 'page'
+      })));
+    }
+
+    const introSidebar = await sidebarSnapshot('/docs/introduction/');
+    const patternSidebar = await sidebarSnapshot('/docs/pattern-guide/');
+    console.log('INTRO_SIDEBAR=' + JSON.stringify(introSidebar));
+    console.log('PATTERN_SIDEBAR=' + JSON.stringify(patternSidebar));
+
     async function assertPager(pathname, expectedPrev, expectedNext) {
       const pagerResponse = await page.goto(root + pathname, { waitUntil: 'networkidle' });
       assert.equal(pagerResponse.status(), 200, pathname + ' loads');
