@@ -1,7 +1,6 @@
 ---
 layout: default
 ---
-{% assign docs_entry = site.data.navigation.main[0].url %}
 <div class="knowledge-home">
   <header class="knowledge-intro">
     <p class="knowledge-eyebrow">Algorithm Pattern Map</p>
@@ -9,16 +8,16 @@ layout: default
     <p class="knowledge-lead">从题目条件识别可复用模式，再把思路稳定地写成 Java。</p>
     <p>不按题号死记答案，而是沿数据结构、指针与窗口、搜索、贪心、动态规划等模式组织 147 道题，建立面试时可快速恢复的解题框架。</p>
     <div class="knowledge-actions">
-      <a class="btn btn--primary" href="{{ docs_entry | relative_url }}">查看题型识别指南 <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
+      <a class="btn btn--primary" href="{{ '/docs/pattern-guide/' | relative_url }}">查看题型识别指南 <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
       <button class="btn btn--ghost" type="button" data-search-open><i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i> 搜索题目与模式 <kbd>/</kbd></button>
-      <a href="{{ '/docs/introduction/' | relative_url }}">阅读说明</a>
+      <a href="{{ '/docs/' | relative_url }}">完整目录</a>
       <a href="#core-topics">核心模式</a>
     </div>
   </header>
 
   <section aria-labelledby="knowledge-map" class="knowledge-section">
-    <div class="knowledge-section-head"><h2 id="knowledge-map">解题模式地图</h2><p>六个相互连接的模式组，先看问题结构，再决定指针、搜索、贪心还是状态转移。</p></div>
-    <div class="knowledge-root"><i class="fa-solid fa-diagram-project" aria-hidden="true"></i> Algorithm Notes <span>→ 六个模式分组</span></div>
+    <div class="knowledge-section-head"><h2 id="knowledge-map">解题模式地图</h2><p>按复习入口与题型组织，先看问题结构，再决定指针、搜索、贪心还是状态转移。</p></div>
+    <div class="knowledge-root"><i class="fa-solid fa-diagram-project" aria-hidden="true"></i> Algorithm Notes <span>→ 导航分组</span></div>
     <nav class="knowledge-overview" aria-label="算法模式快速定位">
       {% for group in site.data.knowledge_map.groups %}<a href="#group-{{ group.id }}"><span aria-hidden="true">{{ forloop.index | prepend: '0' }}</span>{{ group.title }}</a>{% endfor %}
     </nav>
@@ -34,7 +33,7 @@ layout: default
       </li>
       {% endfor %}
     </ol>
-    <p class="knowledge-connection">题目里的有序性、连续区间、局部选择、状态依赖与图结构，分别对应不同的可利用性质。先识别这些结构，再选择模式，比记忆单题答案更稳定。<a href="{{ docs_entry | relative_url }}">查看题型识别与解题套路 →</a></p>
+    <p class="knowledge-connection">题目里的有序性、连续区间、局部选择、状态依赖与图结构，对应不同的可利用性质。先识别结构，再选择模式，比记忆单题答案更稳定。<a href="{{ '/docs/interview-sprint/' | relative_url }}">查看面试冲刺路线 →</a></p>
   </section>
 
   <section aria-labelledby="core-topics" class="knowledge-section">
@@ -49,6 +48,5 @@ layout: default
   <nav class="knowledge-resources" aria-label="相关入口">
     <a href="{{ '/docs/introduction/' | relative_url }}">阅读说明</a>
     <a href="{{ '/docs/appendices/' | relative_url }}">附录与覆盖范围</a>
-    <a href="https://github.com/miauyle/algorithm-notes">GitHub <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i></a>
   </nav>
 </div>
