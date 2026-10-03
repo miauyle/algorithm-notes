@@ -1,10 +1,18 @@
+.DS_Store
+Thumbs.db
+__pycache__/
+*.pyc
+*.gem
+.env
+.env.*
+!.env.example
 _site/
 .sass-cache/
 .jekyll-cache/
 .jekyll-metadata
-/vendor/
+.bundle/
+vendor/
 node_modules/
-# Gemfile.lock is committed on purpose so deployment dependencies stay reproducible.
-.DS_Store
-Thumbs.db
-*.gem
+assets/vendor/katex/
+assets/vendor/mermaid/
+site-qa/
