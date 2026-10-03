@@ -99,19 +99,24 @@ const report = { checks: [], errors: [] };
     await page.keyboard.press('Escape');
     report.checks.push('mode persistence and search');
 
-    await open('/docs/');
-    assert.match(await page.locator('h1').textContent(), /完整目录/);
-
     const expectedSidebar = ordered.map(item => ({ title: item.title, href: base + item.route }));
-    for (const item of ordered) {
-      await open(item.route);
+    async function assertSidebarOrder(label) {
       const actualSidebar = await page.locator('#sidebar .sidebar__link').evaluateAll((nodes, expectedHrefs) => nodes
         .map(node => ({
           title: node.textContent.trim().replace(/\\s+/g, ' '),
           href: node.getAttribute('href')
         }))
         .filter(entry => expectedHrefs.includes(entry.href)), expectedSidebar.map(entry => entry.href));
-      assert.deepEqual(actualSidebar, expectedSidebar, item.path + ': sidebar order');
+      assert.deepEqual(actualSidebar, expectedSidebar, label + ': sidebar order');
+    }
+
+    await open('/docs/');
+    assert.match(await page.locator('h1').textContent(), /完整目录/);
+    await assertSidebarOrder('/docs/');
+
+    for (const item of ordered) {
+      await open(item.route);
+      await assertSidebarOrder(item.path);
       assert.equal(await page.locator('#sidebar .sidebar__link.is-active').count(), 1, item.path);
       for (const link of await page.locator('.doc-pager a').evaluateAll(nodes => nodes.map(node => node.getAttribute('href')))) {
         assert.ok(link && link.startsWith(base + '/docs/'), item.path + ': pager URL');
