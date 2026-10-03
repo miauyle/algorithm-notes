@@ -11,8 +11,10 @@ sidebar:
     icon: fa-solid fa-rocket
     open: true
     children:
-      - { title: 阅读说明, url: /docs/introduction/ }
+      - { title: 面试冲刺路线, url: /docs/interview-sprint/ }
+      - { title: 算法面试速查表, url: /docs/cheat-sheet/ }
       - { title: 题型识别与解题套路, url: /docs/pattern-guide/ }
+      - { title: 阅读说明, url: /docs/introduction/ }
 
   - title: 基础数据结构
     icon: fa-solid fa-layer-group
