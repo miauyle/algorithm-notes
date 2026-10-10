@@ -69,7 +69,7 @@ const report = { checks: [], errors: [] };
 
     const brandLogo = page.locator('.navbar .brand__logo');
     assert.match(await brandLogo.getAttribute('src'), /logo-theme\.svg\?v=[0-9a-f]{12}$/);
-    const favicon = page.locator('link[rel="icon"][type="image/svg+xml"]');
+    const favicon = page.locator('link[data-static-brand-icon][type="image/svg+xml"]');
     assert.equal(await favicon.count(), 1);
     assert.match(await favicon.getAttribute('href'), /favicon-algorithm\.svg\?v=[0-9a-f]{12}$/);
 
