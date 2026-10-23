@@ -16,7 +16,7 @@ concurrency:
 
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     steps:
       - uses: actions/checkout@v7
       - uses: ruby/setup-ruby@v1
@@ -56,6 +56,8 @@ jobs:
         run: |
           "$RUNNER_TEMP/site-deps/node_modules/.bin/playwright" install --with-deps webkit
           NODE_PATH="$RUNNER_TEMP/site-deps/node_modules" node maintenance/check_webkit_icons.cjs /algorithm-notes
+      - name: Verify system, light and dark modes in Chromium and WebKit
+        run: NODE_PATH="$RUNNER_TEMP/site-deps/node_modules" node maintenance/check_theme_mode.cjs /algorithm-notes
       - name: Save browser evidence
         if: always()
         uses: actions/upload-artifact@v7

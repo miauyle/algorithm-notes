@@ -90,10 +90,12 @@ const report = { checks: [], errors: [] };
     report.checks.push('home, brand assets, theme switching and canonical navigation');
 
     await page.locator('#modeToggle').click();
+    await page.locator('[data-mode-set="dark"]').click();
     assert.equal(await page.locator('html').getAttribute('data-mode'), 'dark');
     await page.reload();
     assert.equal(await page.locator('html').getAttribute('data-mode'), 'dark');
     await page.locator('#modeToggle').click();
+    await page.locator('[data-mode-set="light"]').click();
 
     await page.keyboard.press('/');
     await page.locator('#searchInput').fill(ordered[0].title);
